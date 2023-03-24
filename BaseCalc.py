@@ -23,6 +23,38 @@ def letter_to_number(letter):
         return letter
 
 
+def check_number_hex(num):
+    for letter in num:
+        if not letter.isdigit() and not letter_is_hex(letter):
+            return False
+    return True
 
-hex_to_dec("5ec")
+def letter_is_hex(letter):
+    if letter == 'a' or letter == 'A' or letter == 'b' or letter == 'B' or letter == 'c' or letter == 'C'\
+    or letter == 'd' or letter == 'D' or letter == 'e' or letter == 'E' or letter == 'f' or letter == 'F':
+        return True
+    return False
 
+def main():
+    while(True):
+        val = input("press 1 to go from hex to dec \n"
+                    "press 2 to to go from dec to hex\n"
+                    "press 0 to exit:\n")
+        if val == '1':
+            number = input("enter number:\n")
+            if(check_number_hex(number)):
+                hex_to_dec(number)
+            else:
+                print('number not hexadecimal')
+        if val == '2':
+            number = input("enter number:\n")
+            if(check_number_hex(number)):
+                hex_to_dec(number)
+            else:
+                print('number not hexadecimal')
+        if val == '0':
+            break
+
+
+
+main()
