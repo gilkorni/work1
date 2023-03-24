@@ -1,3 +1,11 @@
+def Dec_To_Hex(num):
+    Hex = ""
+    while num > 0:
+        whole = num // 16
+        remainder = num % 16
+        Hex = ''.join((number_to_letter(remainder), Hex))
+        num = whole
+    print(Hex)
 def hex_to_dec(num):
     count = len(num) - 1
     hexnum = 0
@@ -5,6 +13,22 @@ def hex_to_dec(num):
         hexnum += int(letter_to_number(letter)) * (16**count)
         count -= 1
     print(hexnum)
+
+def number_to_letter(number):
+    if number == 10:
+        return "A"
+    elif number == 11:
+        return 'B'
+    elif number == 12:
+        return 'C'
+    elif number == 13:
+        return 'D'
+    elif number == 14:
+        return 'E'
+    elif number == 15:
+        return 'F'
+    else:
+        return str(number)
 
 def letter_to_number(letter):
     if letter == 'a' or letter == 'A':
@@ -21,6 +45,7 @@ def letter_to_number(letter):
         return 15
     else:
         return letter
+
 
 
 def check_number_hex(num):
@@ -48,13 +73,14 @@ def main():
                 print('number not hexadecimal')
         if val == '2':
             number = input("enter number:\n")
-            if(check_number_hex(number)):
-                hex_to_dec(number)
+            if(number.isnumeric()):
+                Dec_To_Hex(int(number))
             else:
-                print('number not hexadecimal')
+                print('number not decimal')
         if val == '0':
             break
 
 
 
 main()
+
